@@ -20,7 +20,7 @@ const components = [
   {
     id: "solar",
     name: "Solar Panels",
-    description: "High-efficiency triple-junction GaAs arrays (28–30% efficiency) with deployable design for maximum surface area. Includes Maximum Power Point Tracking (MPPT) for optimal energy harvesting under varying illumination.",
+    description: "High-efficiency solar arrays (28–30% efficiency) with deployable design for maximum surface area. Includes Maximum Power Point Tracking (MPPT) for optimal energy harvesting under varying illumination.",
   },
   {
     id: "battery",

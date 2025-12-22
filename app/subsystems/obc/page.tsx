@@ -4,13 +4,12 @@ import { SubsystemPage } from "@/components/sections/SubsystemPage";
 export const metadata: Metadata = {
   title: "OBC - On-Board Computer | Team Anant",
   description:
-    "Zynq-7000 SoC based onboard computer system for Team Anant's nanosatellite with custom OS.",
+    "System-on-Chip based onboard computer for Team Anant's nanosatellite with custom OS.",
 };
 
 const specs = [
-  { param: "Platform", value: "Zynq-7000 All Programmable SoC" },
-  { param: "Processor System (PS)", value: "Dual ARM Cortex-A9 @ 1 GHz" },
-  { param: "Programmable Logic (PL)", value: "28 nm Xilinx PL" },
+  { param: "Platform", value: "System-on-Chip (SoC) with Programmable Logic" },
+  { param: "Processor System", value: "Dual-core ARM processor" },
   { param: "Operating System", value: "Custom Linux system - TACOS" },
   { param: "Memory", value: "256 KB On-Chip with external DDR3/DDR2/LPDDR2 support" },
   { param: "Power Consumption", value: "<2 W" },
@@ -20,12 +19,12 @@ const components = [
   {
     id: "processor",
     name: "Processor System",
-    description: "Dual ARM Cortex-A9 processor system running a custom Linux OS for reliable operations. Handles flight plan, subsystem interfacing and image compression with fault-tolerant software architecture.",
+    description: "Dual-core ARM processor system running a custom Linux OS for reliable operations. Handles flight plan, subsystem interfacing and image compression with fault-tolerant software architecture.",
   },
   {
     id: "fpga",
     name: "Programmable Logic",
-    description: "28 nm Xilinx PL equipped with Configurable Logic Blocks, Signal Processing Blocks, Programmable I/O, transceivers and serial interface. Platform for SpaceWire Protocol implementation as well as image compression.",
+    description: "FPGA fabric equipped with Configurable Logic Blocks, Signal Processing Blocks, Programmable I/O, transceivers and serial interface. Platform for SpaceWire Protocol implementation as well as image compression.",
   },
   {
     id: "interfaces",
@@ -57,7 +56,7 @@ export default function OBCPage() {
       subtitle="On-Board Computer"
       description="System-on-Chip based onboard computer equipped with custom Linux OS for data processing, flight plan and subsystem interfacing. FPGA enabled."
       overview="The On-Board Computer serves as the brain of the satellite, coordinating all subsystem operations and managing mission data. It executes the flight plan and handles autonomous decision-making."
-      overviewDetails="Built on an AMD (Xilinx) Zynq-7000 All Programmable SoC, running a custom Linux-based operating system, the OBC provides reliable space operations with fault-tolerant software architecture. It manages payload scheduling, subsystem interfacing, state management and ground communication protocols."
+      overviewDetails="Built on a System-on-Chip (SoC) platform with integrated processor and programmable logic, running a custom Linux-based operating system, the OBC provides reliable space operations with fault-tolerant software architecture. It manages payload scheduling, subsystem interfacing, state management and ground communication protocols."
       specs={specs}
       components={components}
       stats={stats}
