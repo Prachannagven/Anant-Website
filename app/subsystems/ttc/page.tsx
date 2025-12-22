@@ -4,11 +4,11 @@ import { SubsystemPage } from "@/components/sections/SubsystemPage";
 export const metadata: Metadata = {
   title: "TTC - Telemetry, Tracking & Command | Team Anant",
   description:
-    "UHF LoRa and S-band communication system for Team Anant's nanosatellite with beaconing and mission data downlink capabilities.",
+    "UHF and S-band communication system for Team Anant's nanosatellite with beaconing and mission data downlink capabilities.",
 };
 
 const specs = [
-  { param: "UHF Transceiver", value: "LoRa (433 MHz)" },
+  { param: "UHF Transceiver", value: "433 MHz" },
   { param: "S-band Transceiver", value: "2.4 GHz" },
   { param: "UHF Protocol", value: "AX.25" },
   { param: "UHF Data Rate", value: "9.6 kbps" },
@@ -20,8 +20,8 @@ const specs = [
 const components = [
   {
     id: "uhf-transceiver",
-    name: "UHF LoRa Transceiver",
-    description: "UHF LoRa transceiver operating at 433 MHz for beaconing and telemetry. Provides low power consumption and high sensitivity with configurable data rates and modulation schemes.",
+    name: "UHF Transceiver",
+    description: "UHF transceiver operating at 433 MHz for beaconing and telemetry. Provides low power consumption and high sensitivity with configurable data rates and modulation schemes.",
   },
   {
     id: "sband-transceiver",
@@ -56,8 +56,8 @@ export default function TTCPage() {
     <SubsystemPage
       code="TTC"
       subtitle="Telemetry, Tracking & Command"
-      description="Dual-band communication system with UHF LoRa beaconing and S-band mission data downlink for reliable ground station operations."
-      overview="The Telemetry and Ground Station subsystem serves as the communication backbone of the satellite mission. It is responsible for receiving real-time health and status data (telemetry) from the satellite and transmitting commands from the ground. The subsystem uses a UHF LoRa transceiver for beaconing and an S-band transceiver for downlinking mission data."
+      description="Dual-band communication system with UHF beaconing and S-band mission data downlink for reliable ground station operations."
+      overview="The Telemetry and Ground Station subsystem serves as the communication backbone of the satellite mission. It is responsible for receiving real-time health and status data (telemetry) from the satellite and transmitting commands from the ground. The subsystem uses a UHF transceiver for beaconing and an S-band transceiver for downlinking mission data."
       overviewDetails="The ground station enables mission control to monitor and manage operations throughout the mission lifecycle. Using deployable antennas and AX.25 protocol for data framing, the TTC provides reliable communication links during ground station passes. The system supports both beacon transmission and commanded data downloads."
       specs={specs}
       components={components}

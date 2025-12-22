@@ -15,7 +15,7 @@ const specs = [
   { param: "Factor of Safety", value: "1.25 (yield margin per ECSS)" },
   { param: "Thermal Insulation", value: "Multi-Layer Insulation (MLI)" },
   { param: "Operating Temperature", value: "−40 °C to +85 °C" },
-  { param: "Temperature Sensors", value: "TMP117 (high-accuracy digital)" },
+  { param: "Temperature Sensors", value: "High-accuracy digital sensors" },
   { param: "Vibration Rating", value: "> 10 Grms" },
 ];
 
@@ -48,13 +48,13 @@ const components = [
     id: "active-thermal",
     name: "Active Thermal Control (Battery)",
     description:
-      "Lithium-ion battery pack protected by an active thermal control loop with optimal range of 0 °C to 45 °C. TMP117 sensors monitor battery temperature continuously, with a closed-loop hysteresis controller activating Kapton resistive heaters during eclipse conditions to prevent electrolyte freezing and long-term battery damage.",
+      "Lithium-ion battery pack protected by an active thermal control loop with optimal range of 0 °C to 45 °C. Temperature sensors monitor battery temperature continuously, with a closed-loop hysteresis controller activating resistive heaters during eclipse conditions to prevent electrolyte freezing and long-term battery damage.",
   },
   {
     id: "temperature-monitoring",
     name: "Temperature Monitoring Network",
     description:
-      "Network of TMP117 high-precision digital temperature sensors at key locations: battery pack (EPS), payload mounting interface, and On-Board Computer (OBC). Sensor data is transmitted to the OBC for real-time telemetry, thermal health monitoring, and post-flight analysis.",
+      "Network of high-precision digital temperature sensors at key locations: battery pack (EPS), payload mounting interface, and On-Board Computer (OBC). Sensor data is transmitted to the OBC for real-time telemetry, thermal health monitoring, and post-flight analysis.",
   },
   {
     id: "antenna-deployment",
