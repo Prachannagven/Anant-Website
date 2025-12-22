@@ -1,6 +1,5 @@
 "use client";
 
-import { Metadata } from "next";
 import { motion } from "framer-motion";
 import { Leaf, Droplets } from "lucide-react";
 import { SubsystemPage } from "@/components/sections/SubsystemPage";
@@ -59,22 +58,20 @@ const applications = [
 
 export default function PayloadPage() {
   return (
-    <div className="min-h-screen pt-16 md:pt-18">
-      <SubsystemPage
-        code="Payload"
-        subtitle="Hyperspectral Imaging Payload"
-        description="Compact hyperspectral camera enabling cost-effective orbital imaging for remote sensing applications."
-        overview="The hyperspectral imaging payload is the primary scientific instrument of the mission, capturing detailed spectral data across 32 bands for Earth observation and remote sensing."
-        overviewDetails="With a 4096 pixel across-track sensor format and 12-bit depth, the payload enables vegetation monitoring, water quality assessment, and land classification. On-board CCSDS compression ensures efficient data transmission during ground station passes."
-        specs={specs}
-        components={components}
-        stats={stats}
-        prevLink={{ href: "/subsystems/sts", label: "STS" }}
-        nextLink={{ href: "/subsystems/adcs", label: "ADCS" }}
-      />
-
+    <SubsystemPage
+      code="Payload"
+      subtitle="Hyperspectral Imaging Payload"
+      description="Compact hyperspectral camera enabling cost-effective orbital imaging for remote sensing applications."
+      overview="The hyperspectral imaging payload is the primary scientific instrument of the mission, capturing detailed spectral data across 32 bands for Earth observation and remote sensing."
+      overviewDetails="With a 4096 pixel across-track sensor format and 12-bit depth, the payload enables vegetation monitoring, water quality assessment, and land classification. On-board CCSDS compression ensures efficient data transmission during ground station passes."
+      specs={specs}
+      components={components}
+      stats={stats}
+      prevLink={{ href: "/subsystems/sts", label: "STS" }}
+      nextLink={{ href: "/subsystems/adcs", label: "ADCS" }}
+    >
       {/* Applications Section - Unique to Payload */}
-      <div className="container mx-auto px-4 -mt-12 pb-24">
+      <div className="container mx-auto px-4 py-12">
         <Separator className="mb-12" />
         <MotionSection className="max-w-4xl mx-auto">
           <MotionH2 className="text-2xl font-bold mb-6">Applications</MotionH2>
@@ -96,7 +93,7 @@ export default function PayloadPage() {
                     <motion.div
                       className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 25 }}
                     >
                       <app.icon className="w-5 h-5 text-primary" />
                     </motion.div>
@@ -111,6 +108,6 @@ export default function PayloadPage() {
           </motion.div>
         </MotionSection>
       </div>
-    </div>
+    </SubsystemPage>
   );
 }

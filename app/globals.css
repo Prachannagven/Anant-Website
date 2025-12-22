@@ -82,6 +82,8 @@
   --primary-foreground: oklch(0.1797 0.0043 308.1928);
   --secondary: oklch(0.5940 0.0443 196.0233);
   --secondary-foreground: oklch(0.1797 0.0043 308.1928);
+  --accent-teal: oklch(0.75 0.15 180);
+  --accent-teal-foreground: oklch(0.1797 0.0043 308.1928);
   --muted: oklch(0.2520 0 0);
   --muted-foreground: oklch(0.6268 0 0);
   --accent: oklch(0.3211 0 0);
@@ -138,6 +140,8 @@
   --primary-foreground: oklch(0.1797 0.0043 308.1928);
   --secondary: oklch(0.5940 0.0443 196.0233);
   --secondary-foreground: oklch(0.1797 0.0043 308.1928);
+  --accent-teal: oklch(0.75 0.15 180);
+  --accent-teal-foreground: oklch(0.1797 0.0043 308.1928);
   --muted: oklch(0.2520 0 0);
   --muted-foreground: oklch(0.6268 0 0);
   --accent: oklch(0.3211 0 0);
@@ -282,6 +286,17 @@
   50% { box-shadow: 0 0 20px 2px rgba(var(--primary-rgb, 114, 20, 19), 0.15); }
 }
 
+@keyframes pulseSubtle {
+  0%, 100% { 
+    box-shadow: 0 4px 6px -1px rgba(45, 212, 191, 0.25);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 4px 15px -1px rgba(45, 212, 191, 0.4);
+    transform: scale(1.02);
+  }
+}
+
 @keyframes twinkle {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.8; }
@@ -297,6 +312,10 @@
 
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s ease-in-out infinite;
 }
 
 /* Hero cosmic gradient overlay */

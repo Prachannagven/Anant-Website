@@ -24,7 +24,7 @@ export function ParallaxLayer({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 30, stiffness: 100 };
+  const springConfig = { damping: 40, stiffness: 80 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 

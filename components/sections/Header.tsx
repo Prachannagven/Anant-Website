@@ -36,6 +36,7 @@ const subsystems = [
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Recruitments", href: "/recruitments" },
   { name: "Team", href: "/team" },
   { name: "Publications", href: "/publications" },
 ];
@@ -180,20 +181,35 @@ export function Header() {
                 {/* Remaining nav links */}
                 {navLinks.slice(2).map((link) => (
                   <NavigationMenuItem key={link.name}>
-                    <Link href={link.href} legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className={cn(
-                          "inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium transition-all duration-200",
-                          "hover:bg-accent/80 hover:text-accent-foreground",
-                          "focus:bg-accent focus:text-accent-foreground focus:outline-none",
-                          isActive(link.href)
-                            ? "bg-primary/10 text-primary"
-                            : "text-muted-foreground"
-                        )}
-                      >
-                        {link.name}
-                      </NavigationMenuLink>
-                    </Link>
+                    {link.name === "Recruitments" ? (
+                      <Link href={link.href} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={cn(
+                            "relative inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium transition-all duration-200",
+                            "bg-[var(--accent-teal)] text-[var(--accent-teal-foreground)] hover:bg-[var(--accent-teal)]/90",
+                            "shadow-md shadow-[var(--accent-teal)]/25 hover:shadow-lg hover:shadow-[var(--accent-teal)]/30",
+                            "animate-pulse-subtle"
+                          )}
+                        >
+                          {link.name}
+                        </NavigationMenuLink>
+                      </Link>
+                    ) : (
+                      <Link href={link.href} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={cn(
+                            "inline-flex h-9 items-center justify-center rounded-full px-4 text-sm font-medium transition-all duration-200",
+                            "hover:bg-accent/80 hover:text-accent-foreground",
+                            "focus:bg-accent focus:text-accent-foreground focus:outline-none",
+                            isActive(link.href)
+                              ? "bg-primary/10 text-primary"
+                              : "text-muted-foreground"
+                          )}
+                        >
+                          {link.name}
+                        </NavigationMenuLink>
+                      </Link>
+                    )}
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>
@@ -250,14 +266,18 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium transition-all duration-200",
-                      "hover:bg-accent/80",
-                      isActive(link.href) && (link.href === "/" ? pathname === "/" : true)
-                        ? "bg-primary/10 text-primary"
-                        : "text-foreground"
+                      link.name === "Recruitments"
+                        ? "bg-[var(--accent-teal)] text-[var(--accent-teal-foreground)] shadow-md shadow-[var(--accent-teal)]/25"
+                        : cn(
+                            "hover:bg-accent/80",
+                            isActive(link.href) && (link.href === "/" ? pathname === "/" : true)
+                              ? "bg-primary/10 text-primary"
+                              : "text-foreground"
+                          )
                     )}
                   >
                     {link.name}
-                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                    <ChevronRight className={cn("h-4 w-4", link.name === "Recruitments" ? "text-[var(--accent-teal-foreground)]/70" : "text-muted-foreground")} />
                   </Link>
                 ))}
               </div>

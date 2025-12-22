@@ -5,17 +5,17 @@ import { Variants, Transition } from "framer-motion";
 // ============================================
 
 export const TIMING = {
-  fast: 0.2,
-  normal: 0.35,
-  slow: 0.5,
-  stagger: 0.12,
+  fast: 0.35,
+  normal: 0.5,
+  slow: 0.7,
+  stagger: 0.15,
 } as const;
 
 export const EASE = {
   out: [0.16, 1, 0.3, 1] as const,
   inOut: [0.65, 0, 0.35, 1] as const,
-  spring: { type: "spring", stiffness: 200, damping: 20 } as const,
-  springStiff: { type: "spring", stiffness: 300, damping: 25 } as const,
+  spring: { type: "spring", stiffness: 150, damping: 25 } as const,
+  springStiff: { type: "spring", stiffness: 200, damping: 30 } as const,
 };
 
 // ============================================
@@ -189,7 +189,7 @@ export const hoverLift = {
   hover: { 
     y: -4, 
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300, damping: 20 }
+    transition: { type: "spring", stiffness: 200, damping: 25 }
   },
 };
 

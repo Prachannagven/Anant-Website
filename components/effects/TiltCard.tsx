@@ -31,10 +31,10 @@ export function TiltCard({
   const glareY = useMotionValue(50);
   const cardScale = useMotionValue(1);
 
-  const springConfig = { damping: 20, stiffness: 200 };
+  const springConfig = { damping: 30, stiffness: 150 };
   const smoothRotateX = useSpring(rotateX, springConfig);
   const smoothRotateY = useSpring(rotateY, springConfig);
-  const smoothScale = useSpring(cardScale, { damping: 25, stiffness: 300 });
+  const smoothScale = useSpring(cardScale, { damping: 35, stiffness: 200 });
 
   useEffect(() => {
     const element = ref.current;

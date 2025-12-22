@@ -106,7 +106,7 @@ export function Subsystems() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
           >
             <p className="text-muted-foreground italic">
               &ldquo;Enabling a cost‑effective hyperspectral imaging mission while providing a hands‑on, end‑to‑end

@@ -27,7 +27,7 @@ export function Magnetic({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springConfig = { damping: 15, stiffness: 150 };
+  const springConfig = { damping: 25, stiffness: 100 };
   const smoothX = useSpring(x, springConfig);
   const smoothY = useSpring(y, springConfig);
 

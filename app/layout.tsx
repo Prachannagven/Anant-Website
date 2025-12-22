@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/sections/Header";
-import { Footer } from "@/components/sections/Footer";
 import { GlobalEffects } from "@/components/effects";
 
 const geistSans = Geist({
@@ -46,7 +45,6 @@ export default function RootLayout({
         <GlobalEffects />
         <Header />
         <main className="relative">{children}</main>
-        <Footer />
       </body>
     </html>
   );

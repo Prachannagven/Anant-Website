@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket } from "lucide-react";
-import { ParallaxLayer, Magnetic, BlurReveal, SlideReveal } from "@/components/effects";
+import { ParallaxLayer, BlurReveal, SlideReveal } from "@/components/effects";
 
 export function Hero() {
   return (
@@ -38,28 +38,24 @@ export function Hero() {
       </ParallaxLayer>
 
       {/* Main content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Logo with blur reveal */}
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-16">
+        {/* Logo */}
         <BlurReveal delay={0.1} className="mb-8 md:mb-10">
-          <ParallaxLayer depth={0.06} className="inline-block">
-            <Image
-              src="/assets/logos/anant-logo.png"
-              alt="Team Anant Logo"
-              width={120}
-              height={120}
-              className="mx-auto h-24 md:h-32 w-auto"
-              priority
-            />
-          </ParallaxLayer>
+          <Image
+            src="/assets/logos/anant-logo.png"
+            alt="Team Anant Logo"
+            width={120}
+            height={120}
+            className="mx-auto h-24 md:h-32 w-auto"
+            priority
+          />
         </BlurReveal>
 
-        {/* Title with magnetic effect */}
+        {/* Title */}
         <SlideReveal delay={0.2} distance={40}>
-          <Magnetic strength={15} radius={200} className="inline-block">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-foreground tracking-tight">
-              Team Anant
-            </h1>
-          </Magnetic>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-foreground tracking-tight">
+            Team Anant
+          </h1>
         </SlideReveal>
 
         {/* Tagline */}
@@ -81,43 +77,52 @@ export function Hero() {
           </p>
         </SlideReveal>
 
-        {/* CTA Buttons with magnetic effect */}
-        <SlideReveal delay={0.6} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Magnetic strength={12} radius={80}>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              <Button asChild size="lg" className="min-w-[160px] gap-2 relative overflow-hidden group">
-                <Link href="/about">
-                  <span className="relative z-10 flex items-center gap-2">
-                    <Rocket className="w-4 h-4" />
-                    Explore Mission
-                  </span>
-                  {/* Hover glow */}
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                </Link>
-              </Button>
-            </motion.div>
-          </Magnetic>
+        {/* CTA Buttons */}
+        <SlideReveal delay={0.6} className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
+          {/* Recruitments Open Bubble */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          >
+            <Link href="/recruitments" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--accent-teal)]/40 bg-[var(--accent-teal)]/15 hover:bg-[var(--accent-teal)]/25 hover:border-[var(--accent-teal)]/60 transition-all duration-200 cursor-pointer shadow-lg shadow-[var(--accent-teal)]/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-teal)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-teal)]"></span>
+              </span>
+              <span className="text-sm font-medium text-[var(--accent-teal)]">Recruitments Open!</span>
+            </Link>
+          </motion.div>
           
-          <Magnetic strength={12} radius={80}>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            >
-              <Button asChild variant="outline" size="lg" className="min-w-[160px] gap-2 relative overflow-hidden group">
-                <Link href="/contact">
-                  <span className="relative z-10 flex items-center gap-2">
-                    Get in touch
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              </Button>
-            </motion.div>
-          </Magnetic>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          >
+            <Button asChild variant="outline" size="lg" className="min-w-[160px] gap-2 relative overflow-hidden group">
+              <Link href="/about">
+                <span className="relative z-10 flex items-center gap-2">
+                  <Rocket className="w-4 h-4" />
+                  Explore Mission
+                </span>
+              </Link>
+            </Button>
+          </motion.div>
+          
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          >
+            <Button asChild variant="outline" size="lg" className="min-w-[160px] gap-2 relative overflow-hidden group">
+              <Link href="/contact">
+                <span className="relative z-10 flex items-center gap-2">
+                  Get in touch
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </Button>
+          </motion.div>
         </SlideReveal>
       </div>
     </section>

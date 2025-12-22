@@ -31,8 +31,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "team.anant@pilani.bits-pilani.ac.in",
-    href: "mailto:team.anant@pilani.bits-pilani.ac.in",
+    content: "anant_coordinator@pilani.bits-pilani.ac.in",
+    href: "mailto:anant_coordinator@pilani.bits-pilani.ac.in",
   },
   {
     icon: Phone,
@@ -83,7 +83,7 @@ export function Contact() {
                     rel={item.title === "Address" ? "noopener noreferrer" : undefined}
                     className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-muted/30 transition-all duration-300 h-full"
                   >
-                    <Magnetic strength={8} radius={60}>
+                    <Magnetic strength={5} radius={50}>
                       <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
                         <item.icon className="w-6 h-6 text-primary" />
                       </div>

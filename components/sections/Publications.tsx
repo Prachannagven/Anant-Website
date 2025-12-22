@@ -141,8 +141,8 @@ export function Publications() {
                 key={stat.label} 
                 className="text-center p-4 rounded-lg hover:bg-muted/20 transition-colors duration-300"
                 variants={itemReveal}
-                whileHover={{ scale: 1.08, y: -2 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 200, damping: 25 }}
               >
                 <div className="text-3xl font-bold text-primary mb-1 drop-shadow-[0_0_8px_rgba(180,120,90,0.3)]">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>

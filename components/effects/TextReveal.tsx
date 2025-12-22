@@ -33,7 +33,7 @@ export function TextReveal({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{
-              duration: 0.5,
+              duration: 0.7,
               delay: delay + i * staggerDelay,
               ease: [0.16, 1, 0.3, 1],
             }}
@@ -63,7 +63,7 @@ export function BlurReveal({ children, className, delay = 0 }: BlurRevealProps) 
       initial={{ opacity: 0, filter: "blur(10px)" }}
       animate={{ opacity: 1, filter: "blur(0px)" }}
       transition={{
-        duration: 0.8,
+        duration: 1.0,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
@@ -104,7 +104,7 @@ export function SlideReveal({
       initial={{ opacity: 0, ...offset[direction] }}
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{
-        duration: 0.6,
+        duration: 0.8,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}

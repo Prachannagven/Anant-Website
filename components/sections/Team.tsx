@@ -159,14 +159,14 @@ const teamData = {
     {
       name: "Telemetry, Tracking and Command Subsystem",
       members: [
-        { name: "Shashank Saha", position: "Subsystem Lead", image: "/assets/team_files/24-25/SHASHANK_SAHA.png" },
+        { name: "Kanishk Jain", position: "Subsystem Lead", image: "/assets/team_files/24-25/KANISHK_JAIN.png" },
+        { name: "Rakshit Jain", position: "Subsystem Lead", image: "/assets/team_files/24-25/RAKSHIT_JAIN.png" },
+        { name: "Shashank Saha", position: "Senior Member", image: "/assets/team_files/24-25/SHASHANK_SAHA.png" },
         { name: "Harsh Lakshakar", position: "Senior Member", image: "/assets/team_files/unknown.png" },
-        { name: "Kanishk Jain", position: "Senior Member", image: "/assets/team_files/24-25/KANISHK_JAIN.png" },
-        { name: "Rakshit Jain", position: "Senior Member", image: "/assets/team_files/24-25/RAKSHIT_JAIN.png" },
         { name: "Aarnav Sood", position: "Member", image: "/assets/team_files/24-25/AARNAV_SOOD.png" },
         { name: "Raafey Aziz", position: "Member", image: "/assets/team_files/24-25/RAAFEY_AZIZ.png" },
         { name: "Vatsal Goyal", position: "Member", image: "/assets/team_files/24-25/VATSAL_GOYAL.png" },
-        { name: "Y. N. Shashank", position: "Member", image: "/assets/team_files/24-25/YAMMANURU_NARASIMHA_SHASHANK.png" },
+        { name: "Y.N. Shashank", position: "Member", image: "/assets/team_files/24-25/YAMMANURU_NARASIMHA_SHASHANK.png" },
       ],
     },
   ],
@@ -184,6 +184,16 @@ function getInitials(name: string) {
     .split(" ")
     .map((n) => n[0])
     .join("");
+}
+
+function getDisplayName(name: string) {
+  // For names with initials like "Y.N. Shashank", return the last part
+  const parts = name.split(" ");
+  // If first part looks like initials (contains dots or is very short), return last part
+  if (parts.length > 1 && (parts[0].includes(".") || parts[0].length <= 2)) {
+    return parts[parts.length - 1];
+  }
+  return parts[0];
 }
 
 function getPositionVariant(position: string): "default" | "secondary" | "outline" {
@@ -233,8 +243,8 @@ export function Team() {
                 key={stat.label} 
                 className="text-center relative p-4 rounded-lg hover:bg-muted/20 transition-colors duration-300"
                 variants={itemReveal}
-                whileHover={{ scale: 1.08, y: -2 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 200, damping: 25 }}
               >
                 <div className="text-3xl md:text-4xl font-bold text-primary mb-1 drop-shadow-[0_0_8px_rgba(var(--primary-rgb,180,120,90),0.3)]">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -252,9 +262,9 @@ export function Team() {
               className="inline-flex flex-col items-center p-6 rounded-2xl bg-muted/30 backdrop-blur-sm border border-border/30"
               variants={itemReveal}
               whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
             >
-              <Magnetic strength={8} radius={120}>
+              <Magnetic strength={6} radius={100}>
                 <TeamAvatar
                   src={teamData.faculty.image}
                   alt={teamData.faculty.name}
@@ -290,9 +300,9 @@ export function Team() {
                         className="flex items-center gap-4 p-4 rounded-xl bg-muted/20 hover:bg-muted/40 border border-transparent hover:border-primary/20 transition-all duration-300 cursor-default"
                         variants={listItem}
                         whileHover={{ y: -3, scale: 1.02 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 25 }}
                       >
-                        <Magnetic strength={6} radius={80}>
+                        <Magnetic strength={5} radius={70}>
                           <TeamAvatar
                             src={member.image}
                             alt={member.name}
@@ -320,7 +330,7 @@ export function Team() {
 
           {/* Subsystem Teams - Consistent avatar-based layout */}
           <motion.div 
-            className="space-y-12 max-w-6xl mx-auto"
+            className="space-y-12"
             variants={containerReveal}
             initial="hidden"
             whileInView="show"
@@ -360,9 +370,9 @@ export function Team() {
                                   className="text-center w-28 cursor-default group"
                                   variants={listItem}
                                   whileHover={{ y: -2 }}
-                                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
                                 >
-                                  <Magnetic strength={5} radius={60}>
+                                  <Magnetic strength={4} radius={50}>
                                     <TeamAvatar
                                       src={member.image}
                                       alt={member.name}
@@ -371,7 +381,7 @@ export function Team() {
                                       ringClassName="ring-2 ring-primary/40 transition-all group-hover:ring-primary/70 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/20"
                                     />
                                   </Magnetic>
-                                  <p className="text-xs font-medium truncate">{member.name.split(" ")[0]}</p>
+                                  <p className="text-xs font-medium truncate">{getDisplayName(member.name)}</p>
                                   <span className="text-[10px] text-primary">
                                     {member.position.includes("Lead") ? "Lead" : "Senior"}
                                   </span>
@@ -403,9 +413,9 @@ export function Team() {
                                   className="text-center w-26 cursor-default group"
                                   variants={listItem}
                                   whileHover={{ y: -2 }}
-                                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
                                 >
-                                  <Magnetic strength={4} radius={50}>
+                                  <Magnetic strength={3} radius={40}>
                                     <TeamAvatar
                                       src={member.image}
                                       alt={member.name}
@@ -414,7 +424,7 @@ export function Team() {
                                       ringClassName="transition-all group-hover:scale-105 group-hover:ring-2 group-hover:ring-primary/30 group-hover:shadow-sm group-hover:shadow-primary/15"
                                     />
                                   </Magnetic>
-                                  <p className="text-xs font-medium truncate">{member.name.split(" ")[0]}</p>
+                                  <p className="text-xs font-medium truncate">{getDisplayName(member.name)}</p>
                                 </motion.div>
                               </TooltipTrigger>
                               <TooltipContent>
