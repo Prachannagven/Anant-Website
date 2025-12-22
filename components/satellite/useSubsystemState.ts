@@ -22,7 +22,7 @@ export const SUBSYSTEM_INFO: Record<SubsystemKey, SubsystemInfo> = {
   },
   OBC: {
     name: "On-Board Computer",
-    shortDesc: "Zynq-7000 SoC, TACOS OS",
+    shortDesc: "SoC platform, TACOS OS",
     route: "/subsystems/obc",
   },
   TTC: {
