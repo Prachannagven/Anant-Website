@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
+import { GlobalEffects } from "@/components/effects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,8 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
         {/* Starry space background */}
         <div className="space-bg" aria-hidden="true" />
+        {/* Global interactive effects */}
+        <GlobalEffects />
         <Header />
         <main className="relative">{children}</main>
         <Footer />

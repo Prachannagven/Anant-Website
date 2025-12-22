@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { MotionSection, MotionItem, MotionH2, MotionH3, MotionP } from "@/components/motion";
+import { TiltCard, Magnetic } from "@/components/effects";
+import { containerReveal, itemReveal, itemRevealLeft, EASE } from "@/lib/motion";
 
 const stats = [
   { value: "6", label: "Subsystems" },
@@ -34,19 +39,24 @@ export function About() {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          <MotionSection className="text-center mb-12">
+            <MotionH2 className="text-3xl md:text-5xl font-bold mb-4">
               Team Anant
-            </h2>
-            <div className="h-1 w-16 mx-auto mb-6 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
-            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+            </MotionH2>
+            <MotionItem>
+              <div className="h-1 w-16 mx-auto mb-6 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
+            </MotionItem>
+            <MotionP className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
               BITS Pilani&apos;s student satellite team designing, building, and operating nanosatellites.
-            </p>
-          </div>
+            </MotionP>
+          </MotionSection>
 
           {/* What we're building - moved up */}
-          <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-            <div className="overflow-hidden rounded-xl">
+          <MotionSection className="grid md:grid-cols-2 gap-8 items-center mb-12">
+            <motion.div 
+              variants={itemRevealLeft}
+              className="overflow-hidden rounded-xl"
+            >
               <Image
                 src="/assets/images/rocket-body.png"
                 alt="Satellite concept"
@@ -54,63 +64,96 @@ export function About() {
                 height={400}
                 className="w-full h-auto object-cover"
               />
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">What we&apos;re building</h3>
-              <p className="text-muted-foreground leading-relaxed">
+            </motion.div>
+            <motion.div 
+              variants={containerReveal}
+              className="space-y-4"
+            >
+              <MotionH3 className="text-2xl font-semibold">What we&apos;re building</MotionH3>
+              <MotionP className="text-muted-foreground leading-relaxed">
                 A student-built 3U CubeSat with a compact hyperspectral imaging payload, supported by robust 
                 subsystems and a reliable ground segment. The goal is simple: learn by doing and deliver useful data.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <Badge key={tag} variant="secondary">
+              </MotionP>
+              <MotionItem className="flex flex-wrap gap-2 text-sm">
+                {tags.map((tag, index) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full bg-primary/10 text-primary/80 border border-primary/20"
+                  >
                     {tag}
-                  </Badge>
+                  </span>
                 ))}
-              </div>
-            </div>
-          </div>
+              </MotionItem>
+            </motion.div>
+          </MotionSection>
 
           {/* Key Points - with left border accent */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-semibold mb-8 text-center">Our Approach</h3>
-            <div className="space-y-6">
-              {keyPoints.map((point) => (
-                <div key={point.title} className="pl-6 border-l-2 border-primary/50">
+          <MotionSection className="mb-12">
+            <MotionH3 className="text-2xl font-semibold mb-8 text-center">Our Approach</MotionH3>
+            <motion.div 
+              className="space-y-6"
+              variants={containerReveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
+              {keyPoints.map((point, index) => (
+                <motion.div 
+                  key={point.title} 
+                  variants={itemReveal}
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="pl-6 border-l-2 border-primary/50 hover:border-primary hover:bg-muted/10 rounded-r-lg p-4 -ml-4 transition-all duration-300"
+                >
                   <h4 className="font-semibold text-lg mb-2">{point.title}</h4>
                   <p className="text-muted-foreground leading-relaxed">{point.description}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </MotionSection>
 
           {/* Stats - Simple grid without cards */}
-          <div className="py-8 mb-12">
+          <MotionSection className="py-8 mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {stats.map((stat, index) => (
-                <div key={stat.label} className="relative">
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-1">{stat.value}</div>
+                <motion.div 
+                  key={stat.label} 
+                  className="relative p-4 rounded-lg hover:bg-muted/20 transition-colors duration-300"
+                  variants={itemReveal}
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className="text-3xl md:text-4xl font-bold text-primary mb-1 drop-shadow-[0_0_8px_rgba(180,120,90,0.3)]">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                   {index < stats.length - 1 && (
                     <Separator orientation="vertical" className="absolute right-0 top-1/2 -translate-y-1/2 h-12 hidden md:block" />
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </MotionSection>
 
           {/* Quick links */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="outline" asChild>
-              <Link href="/subsystems/adcs">Explore subsystems</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/team">Meet the team</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/publications">Publications</Link>
-            </Button>
-          </div>
+          <MotionSection className="flex flex-wrap justify-center gap-4">
+            {[
+              { href: "/subsystems/adcs", label: "Explore subsystems", variant: "outline" as const },
+              { href: "/team", label: "Meet the team", variant: "default" as const },
+              { href: "/publications", label: "Publications", variant: "outline" as const },
+            ].map((link, index) => (
+              <Magnetic key={link.href} strength={10} radius={80}>
+                <motion.div
+                  variants={itemReveal}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                <Button variant={link.variant} asChild>
+                  <Link href={link.href}>{link.label}</Link>
+                </Button>
+              </motion.div>
+              </Magnetic>
+            ))}
+          </MotionSection>
         </div>
       </div>
     </section>

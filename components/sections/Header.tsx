@@ -64,10 +64,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
         showSolidBackground
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-background/10"
-          : "bg-transparent"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border/40 shadow-lg shadow-background/5"
+          : "bg-transparent border-b border-transparent"
       )}
     >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
